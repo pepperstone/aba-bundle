@@ -62,11 +62,11 @@ class AbaFileGenerator
             if (count($errors) > 0) {
                 $errorString = '';
                 foreach ($errors as $error) {
-                    $errorString .= sprintf("%s ", $error->getMessage());
+                    $errorString .= sprintf("- %s \n", $error->getMessage());
                 }
 
                 throw new ValidatorException(sprintf(
-                    "Detail record error for record id `%s` : %s",
+                    "Error encountered for Withdrawal ID `%s`: \n %s",
                     $detailRecord->getRecordId(),
                     $errorString
                 ));

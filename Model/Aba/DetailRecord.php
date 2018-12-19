@@ -28,7 +28,7 @@ class DetailRecord implements TransactionInterface
      * @Assert\NotBlank()
      * @Assert\Regex(
      *     pattern = "/^[\d]{3}-[\d]{3}$/",
-     *     message = "Detail record bsb is invalid: {{ value }}. Required format is 000-000."
+     *     message = "Bsb is invalid. Required format is 000-000."
      * )
      */
     private $bsb;
@@ -39,7 +39,7 @@ class DetailRecord implements TransactionInterface
      * @Assert\NotBlank()
      * @Assert\Regex(
      *     pattern = "/^[\d]{0,9}$/",
-     *     message = "Detail record account number is invalid: {{ value }}. Must be up to 9 digits only. Remove dashes and spaces."
+     *     message = "Account number is invalid. Must be up to 9 digits only. Remove dashes and spaces."
      * )
      */
     private $accountNumber;
@@ -49,7 +49,7 @@ class DetailRecord implements TransactionInterface
      *
      * @Assert\Regex(
      *     pattern = "/^N|T|W|X|Y| /",
-     *     message = "Detail record transaction indicator is invalid: {{ value }}. Must be one of W, X, Y or null."
+     *     message = "Transaction indicator is invalid. Must be one of W, X, Y or null."
      * )
      */
     private $indicator;
@@ -68,7 +68,7 @@ class DetailRecord implements TransactionInterface
      * @Assert\NotBlank()
      * @Assert\Type(
      *     type="integer",
-     *     message="The value {{ value }} is not a valid {{ type }}."
+     *     message="The amount {{ value }} is not a valid {{ type }}."
      * )
      * @Assert\LessThanOrEqual(value = 9999999999 )
      */
@@ -80,7 +80,7 @@ class DetailRecord implements TransactionInterface
      * @Assert\NotBlank()
      * @Assert\Regex(
      *     pattern = "/^[\w\s\_?\^\[\],.+-;:=#\/\*\(\)&%!\$@]{0,32}$/",
-     *     message = "Detail record account name is invalid: {{ value }}. Must be letters only and up to 32 characters long."
+     *     message = "Account name is invalid. Must be letters only and up to 32 characters long."
      * )
      */
     private $accountName;
@@ -91,7 +91,7 @@ class DetailRecord implements TransactionInterface
      * @Assert\NotBlank()
      * @Assert\Regex(
      *     pattern = "/^[\w\s\_?\^\[\],.+-;:=#\/\*\(\)&%!\$@]{0,18}$/",
-     *     message = "Detail record reference is invalid: {{ value }}. Must be letters only and up to 18 characters long."
+     *     message = "Reference is invalid. Must be letters only and up to 18 characters long."
      * )
      */
     private $reference;
@@ -101,7 +101,7 @@ class DetailRecord implements TransactionInterface
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\_?\^\[\],.+-;:=#\/\*\(\)&%!\$@]{0,16}$/",
-     *     message = "Detail record reference is invalid: {{ value }}. Must be letters only and up to 16 characters long."
+     *     message = "Remitter is invalid. Must be letters only and up to 16 characters long."
      * )
      */
     private $remitter;
@@ -111,7 +111,7 @@ class DetailRecord implements TransactionInterface
      *
      * @Assert\Type(
      *     type="integer",
-     *      message = "Detail record withholding amount is invalid: {{ value }}. Must be digits only and up to 8 characters long.{{ type }}"
+     *      message = "Withholding amount is invalid. Must be digits only and up to 8 characters long.{{ type }}"
      * )
      * @Assert\LessThanOrEqual(value = 99999999 )
      */
@@ -160,7 +160,7 @@ class DetailRecord implements TransactionInterface
      */
     public function getRecordId()
     {
-        return $this->recordId();
+        return $this->recordId;
     }
 
     /**

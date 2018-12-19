@@ -60,11 +60,8 @@ class NabIntAbaFileGenerator
             $errors = $this->validator->validate($paymentRecord);
 
             if (count($errors) > 0) {
-                throw new ValidatorException(sprintf(
-                    "Payment Record error for record `%s`: \n %s",
-                    $paymentRecord->getRecordId(),
-                    $this->getErrorString($errors)
-                ));
+//                throw new ValidatorException($this->getErrorString($errors, $paymentRecord->getRecordId()));
+                throw new ValidatorException(sprintf("Error encountered for Withdrawal ID %s: \n %s", $paymentRecord->getRecordId(), $this->getErrorString($errors)));
             } else {
                 // Payment record
                 $this->addPaymentRecord($paymentRecord);
@@ -74,11 +71,8 @@ class NabIntAbaFileGenerator
                     $errors = $this->validator->validate($paymentDetailRecord);
 
                     if (count($errors) > 0) {
-                        throw new ValidatorException(sprintf(
-                            "Payment detail record for record id `%s`: %s",
-                            $paymentRecord->getRecordId(),
-                            $this->getErrorString($errors)
-                        ));
+//                        throw new ValidatorException($this->getErrorString($errors, $paymentRecord->getRecordId()));
+                        throw new ValidatorException(sprintf("Error encountered for Withdrawal ID %s: \n %s", $paymentRecord->getRecordId(), $this->getErrorString($errors)));
                     } else {
                         // Payment detail record
                         $this->addPaymentDetailRecord($paymentDetailRecord);
@@ -104,7 +98,7 @@ class NabIntAbaFileGenerator
     }
 
     /**
-     * Parses error strings to only include messages
+     * Parses errors and returns a string.
      * @param $errors
      * @return string
      */
@@ -112,7 +106,7 @@ class NabIntAbaFileGenerator
     {
         $errorString = '';
         foreach ($errors as $error) {
-            $errorString .= sprintf("%s ", $error->getMessage());
+            $errorString .= sprintf(" - %s \n", $error->getMessage());
         }
 
         return $errorString;

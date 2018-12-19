@@ -34,13 +34,13 @@ class PaymentRecord
      *
      * @Assert\Type(
      *     type="numeric",
-     *     message="Payment record payment amount value {{ value }} is not a valid {{ type }}."
+     *     message="Payment amount value is not a valid {{ type }}."
      * )
      * @Assert\Range(
      *      min = 0.01,
      *      max = 999999999999999,
-     *      minMessage = "Payment record payment amount is invalid: {{ value }}. Must be at least {{ limit }}",
-     *      maxMessage = "Payment record payment amount is invalid: {{ value }}. Cannot be more than {{ limit }}"
+     *      minMessage = "Payment amount is invalid. Must be at least {{ limit }}",
+     *      maxMessage = "Payment amount is invalid. Cannot be more than {{ limit }}"
      * )
      */
     private $paymentAmount;
@@ -58,7 +58,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,16}$/",
-     *     message = "Payment record reference is invalid: {{ value }}. Must be up to 16 characters, including special characters(+-/'?.,())."
+     *     message = "Reference is invalid. Must be up to 16 characters, including special characters(+-/'?.,())."
      * )
      */
     private $reference;
@@ -69,7 +69,7 @@ class PaymentRecord
      * @Assert\NotBlank()
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
-     *     message = "Payment record beneficiary name is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
+     *     message = "Beneficiary name is invalid. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $beneficiaryName;
@@ -80,7 +80,7 @@ class PaymentRecord
      * @Assert\NotBlank()
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
-     *     message = "Payment record beneficiary address 1 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
+     *     message = "Beneficiary address 1 is invalid. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $beneficiaryAddress1;
@@ -90,7 +90,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
-     *     message = "Payment record beneficiary address 2 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
+     *     message = "Beneficiary address 2 is invalid. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $beneficiaryAddress2;
@@ -100,12 +100,12 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^(.*?[A-Z]){2,}/",
-     *     message = "Payment record beneficiary address 3 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,()) and contain 2 letter country ISO code."
+     *     message = "Beneficiary address 3 is invalid. Must be up to 35 characters, including special characters(+-/'?.,()) and contain 2 letter country ISO code."
      * )
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
-     *     message = "Payment record beneficiary address 3 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
+     *     message = "Beneficiary address 3 is invalid. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $beneficiaryAddress3;
@@ -116,7 +116,7 @@ class PaymentRecord
      * @Assert\NotBlank()
      * @Assert\Regex(
      *     pattern = "/^[\w]{0,34}$/",
-     *     message = "Payment record beneficiary account number is invalid: {{ value }}. Must be up to 34 letters and numbers."
+     *     message = "Beneficiary account number is invalid. Must be up to 34 letters and numbers."
      * )
      */
     private $beneficiaryAccountNumber;
@@ -126,7 +126,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
-     *     message = "Payment record beneficiary bank name is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
+     *     message = "Beneficiary bank name is invalid. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $beneficiaryBankName;
@@ -136,7 +136,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,85}$/",
-     *     message = "Payment record beneficiary bank address 1 is invalid: {{ value }}. Must be up to 85 characters, including special characters(+-/'?.,())."
+     *     message = "Beneficiary bank address 1 is invalid. Must be up to 85 characters, including special characters(+-/'?.,())."
      * )
      */
     private $beneficiaryBankAddress1;
@@ -146,7 +146,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
-     *     message = "Payment record beneficiary bank address 2 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
+     *     message = "Beneficiary bank address 2 is invalid. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $beneficiaryBankAddress2;
@@ -156,7 +156,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^(.*?[A-Z]){2,}",
-     *     message = "Payment record beneficiary bank address 3 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,()) and contain 2 letter country ISO code."
+     *     message = "Beneficiary bank address 3 is invalid. Must be up to 35 characters, including special characters(+-/'?.,()) and contain 2 letter country ISO code."
      * )
      *
      * @Assert\Length(
@@ -173,7 +173,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,3}$/",
-     *     message = "Payment record purpose of remittance is invalid: {{ value }}. Must be up to 3 characters, including special characters(+-/'?.,())."
+     *     message = "Purpose of remittance is invalid. Must be up to 3 characters, including special characters(+-/'?.,())."
      * )
      */
     private $purposeOfRemittance;
@@ -183,7 +183,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^(B|R)$/",
-     *     message = "Payment record overseas bank charges is invalid: {{ value }}. Must be one of B, R."
+     *     message = "Overseas bank charges is invalid. Must be one of B, R."
      * )
      */
     private $overseasBankCharges;
@@ -193,7 +193,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s]{0,35}$/",
-     *     message = "Payment record remitter name is invalid: {{ value }}. Must be up to 35 letters and numbers."
+     *     message = "Remitter name is invalid. Must be up to 35 letters and numbers."
      * )
      */
     private $remitterName;
@@ -203,13 +203,13 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\d]{3}$/",
-     *     message = "Payment record refinance days is invalid: {{ value }}. Must be up to 3 digits."
+     *     message = "Refinance days is invalid. Must be up to 3 digits."
      * )
      * @Assert\Range(
      *      min = 007,
      *      max = 365,
-     *      minMessage = "Payment record refinance days is invalid: {{ value }}. Must be at least {{ limit }}",
-     *      maxMessage = "Payment record refinance days is invalid: {{ value }}. Cannot be more than {{ limit }}"
+     *      minMessage = "Payment record refinance days is invalid. Must be at least {{ limit }}",
+     *      maxMessage = "Payment record refinance days is invalid. Cannot be more than {{ limit }}"
      * )
      */
     private $refinanceDays;
@@ -226,7 +226,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?\/.,+-]{0,35}$/",
-     *     message = "Payment record additional beneficiary instructions 1 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
+     *     message = "Additional beneficiary instructions 1 is invalid. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $additionalBeneficiaryInstructions1;
@@ -236,7 +236,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
-     *     message = "Payment record additional beneficiary instructions 2 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
+     *     message = "Additional beneficiary instructions 2 is invalid. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $additionalBeneficiaryInstructions2;
@@ -246,7 +246,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
-     *     message = "Payment record additional beneficiary instructions 3 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
+     *     message = "Additional beneficiary instructions 3 is invalid. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $additionalBeneficiaryInstructions3;
@@ -256,7 +256,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
-     *     message = "Payment record additional beneficiary instructions 4 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
+     *     message = "Additional beneficiary instructions 4 is invalid. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $additionalBeneficiaryInstructions4;
@@ -266,7 +266,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
-     *     message = "Payment record additional instructions to NAB is invalid: {{ value }}. Must be up to 275 characters, including special characters(+-/'?.,())."
+     *     message = "Additional instructions to NAB is invalid. Must be up to 275 characters, including special characters(+-/'?.,())."
      * )
      */
     private $additionalInstructionsToNab;
@@ -276,7 +276,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[A-Z]{0,2}$/",
-     *     message = "Payment record beneficiary bank country code is invalid: {{ value }}. Must be up to 2 upper case letters"
+     *     message = "Beneficiary bank country code is invalid. Must be up to 2 upper case letters"
      * )
      */
     private $beneficiaryBankCountryCode;
@@ -286,7 +286,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,11}$/",
-     *     message = "Payment record beneficiary BIC address is invalid: {{ value }}. Must be up to 11 characters, including special characters(+-/'?.,())."
+     *     message = "Beneficiary BIC address is invalid. Must be up to 11 characters, including special characters(+-/'?.,())."
      * )
      */
     private $beneficiaryBicAddress;
@@ -296,7 +296,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^(FW|SC|CH)$/",
-     *     message = "Payment record routing type is invalid: {{ value }}. Must be one of FW, SC, CH."
+     *     message = "Routing type is invalid. Must be one of FW, SC, CH."
      * )
      */
     private $routingType;
@@ -306,7 +306,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w]{0,2}$/",
-     *     message = "Payment record overseas bank charges is invalid: {{ value }}. Must be one up to 2 alphanumeric characters."
+     *     message = "Overseas bank charges is invalid. Must be one up to 2 alphanumeric characters."
      * )
      */
     private $routingCode;
@@ -316,7 +316,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
-     *     message = "Payment record originating applicant details 1 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
+     *     message = "Originating applicant details 1 is invalid. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $originatingApplicantDetails1;
@@ -326,7 +326,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
-     *     message = "Payment record originating applicant details 2 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
+     *     message = "Originating applicant details 2 is invalid. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $originatingApplicantDetails2;
@@ -336,7 +336,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
-     *     message = "Payment record originating applicant details 3 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
+     *     message = "Originating applicant details 3 is invalid. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $originatingApplicantDetails3;
@@ -346,7 +346,7 @@ class PaymentRecord
      *
      * @Assert\Regex(
      *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
-     *     message = "Payment record originating applicant details 4 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
+     *     message = "Originating applicant details 4 is invalid. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $originatingApplicantDetails4;
@@ -357,7 +357,7 @@ class PaymentRecord
      * @Assert\NotBlank()
      * @Assert\Regex(
      *     pattern = "/^[\d]{0,3}$/",
-     *     message = "Payment record number of detail record is invalid: {{ value }}. Must be up to 3 digits"
+     *     message = "Number of detail record is invalid. Must be up to 3 digits"
      * )
      */
     private $numberOfDetailRecords;
