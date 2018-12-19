@@ -104,6 +104,7 @@ class NabIntAbaFileGenerator
     }
 
     /**
+     * Parses error strings to only include messages
      * @param $errors
      * @return string
      */
