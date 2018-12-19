@@ -10,6 +10,9 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class PaymentRecord
 {
+    /** @var string */
+    private $recordId;
+
     /**
      * @var string
      *
@@ -76,8 +79,8 @@ class PaymentRecord
      *
      * @Assert\NotBlank()
      * @Assert\Regex(
-     *     pattern = "/^[\w\s\(\)\_?.,+-]{0,85}$/",
-     *     message = "Payment record beneficiary address 1 is invalid: {{ value }}. Must be up to 85 characters, including special characters(+-/'?.,())."
+     *     pattern = "/^[\w\s\(\)\_?.,+-]{0,35}$/",
+     *     message = "Payment record beneficiary address 1 is invalid: {{ value }}. Must be up to 35 characters, including special characters(+-/'?.,())."
      * )
      */
     private $beneficiaryAddress1;
@@ -392,6 +395,24 @@ class PaymentRecord
                 ->atPath('routingType')
                 ->addViolation();
         }
+    }
+
+    /**
+     * Gets the record id
+     * @return string
+     */
+    public function getRecordId()
+    {
+        return $this->recordId;
+    }
+
+    /**
+     * Sets the record id
+     * @param $recordId
+     */
+    public function setRecordId($recordId)
+    {
+        $this->recordId = $recordId;
     }
 
     /**

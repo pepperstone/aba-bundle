@@ -10,6 +10,10 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class DetailRecord implements TransactionInterface
 {
+
+    /** @var string */
+    private $recordId;
+
     /**
      * @var string
      *
@@ -148,6 +152,22 @@ class DetailRecord implements TransactionInterface
                 ->atPath('indicator')
                 ->addViolation();
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getRecordId()
+    {
+        return $this->recordId();
+    }
+
+    /**
+     * @param $recordId
+     */
+    public function setRecordId($recordId)
+    {
+        $this->recordId = $recordId;
     }
 
     /**
