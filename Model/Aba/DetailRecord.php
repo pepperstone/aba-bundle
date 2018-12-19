@@ -155,6 +155,7 @@ class DetailRecord implements TransactionInterface
     }
 
     /**
+     * Gets record id
      * @return string
      */
     public function getRecordId()
@@ -163,6 +164,7 @@ class DetailRecord implements TransactionInterface
     }
 
     /**
+     * Sets record id
      * @param $recordId
      */
     public function setRecordId($recordId)
