@@ -60,7 +60,6 @@ class NabIntAbaFileGenerator
             $errors = $this->validator->validate($paymentRecord);
 
             if (count($errors) > 0) {
-//                throw new ValidatorException($this->getErrorString($errors, $paymentRecord->getRecordId()));
                 throw new ValidatorException(sprintf("Error encountered for Withdrawal ID %s: \n %s", $paymentRecord->getRecordId(), $this->getErrorString($errors)));
             } else {
                 // Payment record
@@ -71,7 +70,6 @@ class NabIntAbaFileGenerator
                     $errors = $this->validator->validate($paymentDetailRecord);
 
                     if (count($errors) > 0) {
-//                        throw new ValidatorException($this->getErrorString($errors, $paymentRecord->getRecordId()));
                         throw new ValidatorException(sprintf("Error encountered for Withdrawal ID %s: \n %s", $paymentRecord->getRecordId(), $this->getErrorString($errors)));
                     } else {
                         // Payment detail record
