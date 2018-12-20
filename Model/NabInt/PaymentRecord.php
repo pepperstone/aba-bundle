@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Author: Latysh (Altynbek Usenov).
  */
@@ -115,8 +116,8 @@ class PaymentRecord
      *
      * @Assert\NotBlank()
      * @Assert\Regex(
-     *     pattern = "/^[\w]{0,34}$/",
-     *     message = "Beneficiary account number is invalid. Must be up to 34 letters and numbers."
+     *     pattern = "/^[\w\- ]{0,34}$/",
+     *     message = "Beneficiary account number is invalid. Must be up to 34 characters consisting of letters, numbers, dashes (-) and spaces."
      * )
      */
     private $beneficiaryAccountNumber;
