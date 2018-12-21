@@ -60,7 +60,17 @@ class AbaFileGenerator
             $errors = $this->validator->validate($detailRecord);
 
             if (count($errors) > 0) {
-                throw new ValidatorException('Detail record error: '.(string) $errors);
+                $errorString = '';
+                foreach ($errors as $error) {
+                    $errorString .= sprintf("- %s \n", $error->getMessage());
+                }
+
+                throw new ValidatorException(sprintf(
+                    "Error encountered for Withdrawal ID `%s`: \n %s",
+                    $detailRecord->getRecordId(),
+                    $errorString
+                ));
+
             } else {
                 $this->addDetailRecord($detailRecord, $descriptiveRecord);
                 if ($detailRecord->getTransactionCode() === TransactionCode::EXTERNALLY_INITIATED_DEBIT) {

@@ -60,7 +60,7 @@ class NabIntAbaFileGenerator
             $errors = $this->validator->validate($paymentRecord);
 
             if (count($errors) > 0) {
-                throw new ValidatorException('Payment record error: '.(string) $errors);
+                throw new ValidatorException(sprintf("Error encountered for Withdrawal ID %s: \n %s", $paymentRecord->getRecordId(), $this->getErrorString($errors)));
             } else {
                 // Payment record
                 $this->addPaymentRecord($paymentRecord);
@@ -70,13 +70,14 @@ class NabIntAbaFileGenerator
                     $errors = $this->validator->validate($paymentDetailRecord);
 
                     if (count($errors) > 0) {
-                        throw new ValidatorException('Payment detail record error: '.(string) $errors);
+                        throw new ValidatorException(sprintf("Error encountered for Withdrawal ID %s: \n %s", $paymentRecord->getRecordId(), $this->getErrorString($errors)));
                     } else {
                         // Payment detail record
                         $this->addPaymentDetailRecord($paymentDetailRecord);
                     }
                 }
             }
+
             $paymentTrailerRecord = new PaymentTrailerRecord();
             // Payment trailer record
             $this->addPaymentTrailerRecord($paymentTrailerRecord);
@@ -92,6 +93,21 @@ class NabIntAbaFileGenerator
         $this->addFileTrailerRecord($fileTrailerRecord);
 
         return $this->abaString;
+    }
+
+    /**
+     * Parses errors and returns a string.
+     * @param $errors
+     * @return string
+     */
+    private function getErrorString($errors)
+    {
+        $errorString = '';
+        foreach ($errors as $error) {
+            $errorString .= sprintf(" - %s \n", $error->getMessage());
+        }
+
+        return $errorString;
     }
 
     /**
