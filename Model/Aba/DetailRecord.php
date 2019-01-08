@@ -80,7 +80,7 @@ class DetailRecord implements TransactionInterface
      * @Assert\NotBlank()
      * @Assert\Regex(
      *     pattern = "/^[\w\s\_?\^\[\],.+-;:=#\/\*\(\)&%!\$@]{0,32}$/",
-     *     message = "Account name is invalid. Must be letters only and up to 32 characters long."
+     *     message = "Account name is invalid. Must be letters only, and up to 32 characters."
      * )
      */
     private $accountName;
