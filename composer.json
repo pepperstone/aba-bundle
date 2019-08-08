@@ -13,7 +13,7 @@
         "MIT"
     ],
     "require":{
-        "php": ">=5.3.9"
+        "php": ">=7.2"
     },
     "autoload":{
         "psr-0":{
@@ -23,9 +23,7 @@
     "target-dir":"Latysh/AbaBundle",
     "extra":{
         "branch-alias":{
-            "dev-master":"0.1-dev"
         }
     }
 }
-
 
