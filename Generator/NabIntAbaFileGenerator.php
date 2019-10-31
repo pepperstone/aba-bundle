@@ -44,6 +44,7 @@ class NabIntAbaFileGenerator
             $paymentRecords = array($paymentRecords);
         }
 
+        $validationErrors = '';
         foreach ($paymentRecords as $paymentRecord) {
             // Payment header
             $this->addPaymentHeader($paymentHeader);
@@ -60,7 +61,7 @@ class NabIntAbaFileGenerator
             $errors = $this->validator->validate($paymentRecord);
 
             if (count($errors) > 0) {
-                throw new ValidatorException(sprintf("Error encountered for Withdrawal ID %s: \n %s", $paymentRecord->getRecordId(), $this->getErrorString($errors)));
+                $validationErrors .= sprintf("Error encountered for Withdrawal ID %s: \n %s \n", $paymentRecord->getRecordId(), $this->getErrorString($errors));
             } else {
                 // Payment record
                 $this->addPaymentRecord($paymentRecord);
@@ -70,7 +71,7 @@ class NabIntAbaFileGenerator
                     $errors = $this->validator->validate($paymentDetailRecord);
 
                     if (count($errors) > 0) {
-                        throw new ValidatorException(sprintf("Error encountered for Withdrawal ID %s: \n %s", $paymentRecord->getRecordId(), $this->getErrorString($errors)));
+                        $validationErrors .= sprintf("Error encountered for Withdrawal ID %s: \n %s \n", $paymentRecord->getRecordId(), $this->getErrorString($errors));
                     } else {
                         // Payment detail record
                         $this->addPaymentDetailRecord($paymentDetailRecord);
@@ -85,6 +86,10 @@ class NabIntAbaFileGenerator
             $paymentTrailer = new PaymentTrailer();
             // Payment trailer
             $this->addPaymentTrailer($paymentTrailer);
+        }
+
+        if ($validationErrors) {
+            throw new ValidatorException($validationErrors);
         }
 
         $fileTrailerRecord = new FileTrailerRecord();
